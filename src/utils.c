@@ -84,7 +84,7 @@ int get_address(char *host, char *port, struct sockaddr *addr)
 uint32_t parse_ipv4_string(char *addr)
 {
     uint8_t addr_bytes[4];
-    sscanf(addr, "%hhu.%hhu.%hhu.%hhu", &addr_types[3], &addr_types[2], &addr_types[1], &addr_types[0]);
+    sscanf(addr, "%hhu.%hhu.%hhu.%hhu", &addr_bytes[3], &addr_bytes[2], &addr_bytes[1], &addr_bytes[0]);
     return addr_bytes[0] | addr_bytes[1] << 8 | addr_bytes[2] << 16 | addr_bytes[3] << 24;
 }
 
