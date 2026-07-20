@@ -24,7 +24,7 @@ static int set_if_route(char *dev, char *cidr)
     return run_cmd("ip route add dev %s %s", dev, cidr);
 }
 
-static int set_if_address(chra *dev, char *cidr)
+static int set_if_address(char *dev, char *cidr)
 {
     return run_cmd("ip address add dev %s local %s", dev, cidr);
 }
@@ -72,6 +72,16 @@ void tun_init()
     if (set_if_up(dev) != 0)
     {
         print_err("ERROR when setting up if\n");
+    }
+
+    if (set_if_route(dev, taproute) != 0)
+    {
+        print_err("ERROR when setting route for if\n");
+    }
+
+    if (set_if_address(dev, tapaddr) != 0)
+    {
+        print_err("ERROR when setting addr for if\n");
     }
 }
 
